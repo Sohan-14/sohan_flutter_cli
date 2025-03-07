@@ -11,10 +11,9 @@ This CLI tool is designed to simplify the process of integrating a custom Flutte
 - **Update `pubspec.yaml`**: Automatically adds necessary dependencies to the project's `pubspec.yaml` file.
 - **Run `flutter pub get`**: Syncs the new dependencies by running `flutter pub get` to ensure that all dependencies are up to date.
 - **Support for `.gitkeep` Files**: Automatically creates `.gitkeep` files in empty directories to ensure they are tracked by Git.
-- **Project Customization**: Allows you to select which specific files and folders from the template you want to replace or add in your project.
+
 
 ## How It Works
-
 1. **Cloning the Template**: The CLI tool clones the starter template repository from GitHub.
 2. **Replacing Files**: Based on the user's selection, the tool replaces or creates specified files and folders in the target Flutter project directory.
 3. **Updating Dependencies**: The tool reads the `pubspec.yaml` of the user's Flutter project and updates it with necessary dependencies (if they are not already present).
@@ -39,5 +38,5 @@ To install this CLI tool globally, run:
 ## Usage
 
 Once installed, you can run the following command to set up your Flutter project:
-    **sohan_flutter_cli setup**
+    **sohan_starter_temp_clean_getx setup**
 
