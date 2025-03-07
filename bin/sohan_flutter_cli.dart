@@ -8,9 +8,13 @@ const String tempFolder = "sohan_starter_temp_clean_getx";
 
 // Define the folders to copy
 final List<String> foldersToCopy = [
+  // assets
   'assets/fonts',
   'assets/images',
   'assets/icons',
+
+  // test
+  'test',
 
   // Core
   'lib/core/config',
@@ -63,6 +67,9 @@ final List<String> filesToReplace = [
   "assets/fonts/.gitkeep",
   "assets/icons/.gitkeep",
   "assets/images/.gitkeep",
+
+  // test file
+  "test/widget_test.dart",
 
   // Core files
   "lib/core/config/app_api_endpoints.dart",
