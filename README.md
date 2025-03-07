@@ -27,3 +27,17 @@ Before using this tool, make sure you have the following installed:
 
 - **Flutter**: Ensure that Flutter SDK is installed and available in your system path.
 - **Dart**: The tool is written in Dart, so make sure Dart SDK is installed as well.
+
+
+## Installation
+
+To install this CLI tool globally, run:
+    **dart pub global activate sohan_flutter_cli**
+
+
+
+## Usage
+
+Once installed, you can run the following command to set up your Flutter project:
+    **sohan_flutter_cli setup**
+

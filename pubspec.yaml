@@ -2,6 +2,7 @@ name: sohan_flutter_cli
 description: "A command-line tool to set up a Flutter project with predefined templates, folders, files, and dependencies."
 version: 1.0.0
 repository: https://github.com/Sohan-14/sohan_flutter_cli
+homepage: https://github.com/Sohan-14/sohan_flutter_cli
 
 environment:
   sdk: ^3.7.0
@@ -16,4 +17,4 @@ dev_dependencies:
   test: ^1.24.0
 
 executables:
-  sohan_starter_temp_clean_getx: sohan_flutter_cli
+  sohan_starter_temp_clean_getx: bin/sohan_flutter_cli.dart
