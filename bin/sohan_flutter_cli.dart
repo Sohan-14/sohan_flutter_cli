@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:yaml_edit/yaml_edit.dart';
 
-const String repoUrl = "https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
+const String repoUrl =
+    "https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
 const String tempFolder = "sohan_starter_temp_clean_getx";
 
 // Define the folders to copy
@@ -156,6 +157,15 @@ final List<String> filesToReplace = [
   "pubspec.yaml",
 ];
 
+/// Main entry point of the CLI application.
+///
+/// This function handles the command-line arguments and decides which
+/// operation to perform, such as `setup`.
+///
+/// Example usage:
+/// ```bash
+/// sohan_starter_temp_clean_getx setup
+/// ```
 void main(List<String> arguments) async {
   final parser = ArgParser()..addCommand('setup');
   final ArgResults argResults = parser.parse(arguments);
@@ -166,6 +176,13 @@ void main(List<String> arguments) async {
     print("Invalid command. Use: `sohan_starter_temp_clean_getx setup`");
   }
 }
+
+/// Sets up a Flutter project with predefined templates, folders, files, and dependencies.
+///
+/// This function handles the process of cloning a repository, replacing selected
+/// files, and updating `pubspec.yaml` with necessary dependencies.
+///
+/// Throws a [SetupException] if the setup fails.
 
 Future<void> setupProject() async {
   final String currentDir = Directory.current.path;
@@ -196,6 +213,13 @@ Future<void> setupProject() async {
   print("Setup complete! Your Flutter project is now updated.");
 }
 
+/// This function replace the files
+/// operation to perform, such as `replace`.
+///
+/// Example usage:
+/// ```bash
+/// sohan_starter_temp_clean_getx setup
+/// ```
 Future<void> replaceFile(String from, String to) async {
   final sourceFile = File(from);
 
@@ -219,7 +243,7 @@ Future<void> replaceFile(String from, String to) async {
   final destinationDir = Directory(to).parent;
   if (!destinationDir.existsSync()) {
     print("Creating directory: ${destinationDir.path}");
-    destinationDir.createSync(recursive: true); 
+    destinationDir.createSync(recursive: true);
   }
 
   if (destinationFile.existsSync()) {
@@ -233,6 +257,14 @@ Future<void> replaceFile(String from, String to) async {
   print("File replaced: $to");
 }
 
+/// This function update pubspec.yaml file
+/// operation to perform, such as `update`.
+///
+/// Example usage:
+/// ```bash
+/// sohan_starter_temp_clean_getx setup
+/// ```
+///
 Future<void> updatePubspec(String pubspecPath) async {
   final pubspecFile = File(pubspecPath);
   if (!pubspecFile.existsSync()) {
@@ -251,6 +283,14 @@ Future<void> updatePubspec(String pubspecPath) async {
   print("✅ Dependencies updated in pubspec.yaml.");
 }
 
+/// This function run the flutter pub get to sync the dependencies
+/// operation to perform, such as `sync`.
+///
+/// Example usage:
+/// ```bash
+/// sohan_starter_temp_clean_getx setup
+/// ```
+///
 Future<void> runFlutterPubGet() async {
   final result = await Process.run('flutter', ['pub', 'get']);
   if (result.exitCode == 0) {
