@@ -17,4 +17,4 @@ dev_dependencies:
   test: ^1.24.0
 
 executables:
-  sohan_starter_temp_clean_getx: "bin/sohan_flutter_cli.dart"
+  sohan_starter_temp_clean_getx: "sohan_flutter_cli.dart"
