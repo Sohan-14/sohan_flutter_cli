@@ -174,10 +174,10 @@ final List<String> filesToReplace = [
 /// sohan_starter_temp_clean_getx setup
 /// ```
 void main(List<String> arguments) async {
-  final parser = ArgParser()..addCommand('setup');
+  final parser = ArgParser()..addCommand('setup') ..addCommand('version');
   final ArgResults argResults = parser.parse(arguments);
 
-if (argResults.command?.name == 'setup') {
+  if (argResults.command?.name == 'setup') {
     final proceed = await askConfirmation(
         "This will set up your Flutter project with predefined templates, folders, files, and added dependencies. Your Files and folder might be replaced.... Do you want to continue? (y/n)");
 
@@ -186,9 +186,18 @@ if (argResults.command?.name == 'setup') {
     } else {
       print("Setup aborted by user.");
     }
-  } else {
+  } 
+  else if (argResults.command?.name == 'version') {
+    printVersion(); // Show version when 'version' command is passed
+  }
+  else {
     print("Invalid command. Use: `sohan_starter_temp_clean_getx setup`");
   }
+}
+
+void printVersion() {
+  const cliVersion = '1.2.0'; 
+  print("sohan_starter_temp_clean_getx CLI version: $cliVersion");
 }
 
 
