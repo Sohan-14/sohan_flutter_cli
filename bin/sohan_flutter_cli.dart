@@ -177,10 +177,37 @@ void main(List<String> arguments) async {
   final parser = ArgParser()..addCommand('setup');
   final ArgResults argResults = parser.parse(arguments);
 
-  if (argResults.command?.name == 'setup') {
-    await setupProject();
+if (argResults.command?.name == 'setup') {
+    final proceed = await askConfirmation(
+        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies. Your Files and folder might be replaced.... Do you want to continue? (y/n)");
+
+    if (proceed) {
+      await setupProject();
+    } else {
+      print("Setup aborted by user.");
+    }
   } else {
     print("Invalid command. Use: `sohan_starter_temp_clean_getx setup`");
+  }
+}
+
+
+/// Asking for confirmation from user
+///
+/// Throws a [SetupException] if the setup fails.
+
+Future<bool> askConfirmation(String prompt) async {
+  while (true) {
+    stdout.write("$prompt ");
+    String? response = stdin.readLineSync()?.toLowerCase();
+
+    if (response?.toLowerCase() == 'y' || response?.toLowerCase() == 'yes') {
+      return true;
+    } else if (response?.toLowerCase() == 'n' || response?.toLowerCase() == 'no') {
+      return false;
+    } else {
+      print("Invalid input. Please enter 'y' or 'n'.");
+    }
   }
 }
 

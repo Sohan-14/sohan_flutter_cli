@@ -1,4 +1,14 @@
-### A sample command-line application
+#### A sample command-line application
+
+##### This command will replace your files if already exists
+
+Active cli globally and if need to update run this command
+
+- dart pub global activate sohan_flutter_cli
+
+
+On your root directory of the flutter starter project run this command to get my starter package files and folders
+-  sohan_starter_temp_clean_getx setup
 
 # Flutter CLI Tool for Project Setup
 
@@ -40,3 +50,39 @@ To install this CLI tool globally, run:
 Once installed, you can run the following command to set up your Flutter project:
     **sohan_starter_temp_clean_getx setup**
 
+
+
+# Project Folder Structure
+
+Here is the folder structure of the project:
+
+
+lib/
+│── core/               
+│   ├── config/        
+│   ├── di/  
+│   ├── enum/          
+│   ├── error/         
+│   ├── extensions/      
+│   ├── utils/           
+│   ├── localization/ 
+│   ├── network/ 
+│   ├── storage/ 
+│   ├── themes/ 
+│   ├── widgets/ 
+│── data/               
+│   ├── models/          
+│   ├── mapper/      
+│   ├── repositories/    
+│   ├── data_sources/     
+│       ├── remote/      
+│── domain/             
+│   ├── entities/       
+│   ├── repositories/    
+│   ├── use_cases/        
+│── presentations/        
+│   ├── bindings/       
+│   ├── controllers/    
+│   ├── screens/  
+│   ├── widgets/     
+│── main.dart           
