@@ -3,7 +3,8 @@ import 'package:args/args.dart';
 import 'package:yaml_edit/yaml_edit.dart';
 
 /// repo url
-const String repoUrl ="https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
+const String repoUrl =
+    "https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
 // template folder
 const String tempFolder = "starter_temp_clean_getx";
 
@@ -226,7 +227,7 @@ final List<String> filesToReplace = [
   // Presentation widgets files
   "lib/presentation/widgets/.gitkeep",
 
-  // main 
+  // main
   "lib/main.dart",
   // pubspec.yaml
   "pubspec.yaml",
@@ -244,36 +245,36 @@ final List<String> filesToReplace = [
 /// starter_temp_clean_getx setup
 /// ```
 void main(List<String> arguments) async {
-  final parser = ArgParser()..addCommand('setup') ..addCommand('version');
+  final parser =
+      ArgParser()
+        ..addCommand('setup')
+        ..addCommand('version');
   final ArgResults argResults = parser.parse(arguments);
 
   if (argResults.command?.name == 'setup') {
     final proceed = await askConfirmation(
-        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies.\nFor cli version just simply run ✅ dart pub global activate sohan_flutter_cli ✅\nYour Files and folder might be replaced....\nDo you want to continue? (y/n)");
+      "This will set up your Flutter project with predefined templates, folders, files, and added dependencies.\nFor cli version just simply run ✅ dart pub global activate sohan_flutter_cli ✅\nYour Files and folder might be replaced....\nDo you want to continue? (y/n)",
+    );
 
     if (proceed) {
       await setupProject();
     } else {
       print("Setup aborted by user.");
     }
-  } 
-  else if (argResults.command?.name == 'version') {
+  } else if (argResults.command?.name == 'version') {
     printVersion();
-  }
-  else {
+  } else {
     print("Invalid command. Use: `starter_temp_clean_getx setup`");
   }
 }
-
 
 // Print the cli version
 ///
 /// [printVersion]
 void printVersion() {
-  const cliVersion = '2.0.0'; 
+  const cliVersion = '2.0.0';
   print("sohan_flutter_cli  version: $cliVersion");
 }
-
 
 /// Asking for confirmation from user
 ///
@@ -285,7 +286,8 @@ Future<bool> askConfirmation(String prompt) async {
 
     if (response?.toLowerCase() == 'y' || response?.toLowerCase() == 'yes') {
       return true;
-    } else if (response?.toLowerCase() == 'n' || response?.toLowerCase() == 'no') {
+    } else if (response?.toLowerCase() == 'n' ||
+        response?.toLowerCase() == 'no') {
       return false;
     } else {
       print("Invalid input. Please enter 'y' or 'n'.");
