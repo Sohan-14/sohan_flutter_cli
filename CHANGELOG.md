@@ -1,2 +1,2 @@
-## 1.2.0
-- Initial version.
+## 1.3.0
+- Add more files

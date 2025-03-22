@@ -2,16 +2,15 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:yaml_edit/yaml_edit.dart';
 
-const String repoUrl =
-    "https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
-const String tempFolder = "sohan_starter_temp_clean_getx";
+const String repoUrl ="https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
+const String tempFolder = "starter_temp_clean_getx";
 
 // Define the folders to copy
 final List<String> foldersToCopy = [
   // assets
   'assets/fonts',
-  'assets/images',
   'assets/icons',
+  'assets/images',
 
   // test
   'test',
@@ -46,8 +45,12 @@ final List<String> foldersToCopy = [
 
   // Presentation
   'lib/presentation/bindings',
+  'lib/presentation/bindings/auth',
   'lib/presentation/controllers',
+  'lib/presentation/controllers/auth',
   'lib/presentation/screens',
+  'lib/presentation/screens/auth',
+  'lib/presentation/screens/profile',
   'lib/presentation/widgets',
 ];
 
@@ -60,18 +63,35 @@ final Map<String, String> dependenciesToAdd = {
   'permission_handler': '^11.4.0',
   'logger': '^2.5.0',
   'dio': '^5.8.0+1',
+  'flutter_svg': '^2.0.17',
+  'pin_code_fields': '^8.0.1',
+  'cached_network_image': '^3.4.1',
+  'url_launcher': '^6.3.1',
 };
 
 // Define the folders and specific files to copy/replace
 final List<String> filesToReplace = [
   "assets/fonts/.gitkeep",
-  "assets/icons/.gitkeep",
+  "assets/icons/back_icon.svg",
+  "assets/icons/cloud_icon.svg",
+  "assets/icons/edit_icon.svg",
+  "assets/icons/email_icon.svg",
+  "assets/icons/eye_close_icon.svg",
+  "assets/icons/eye_open_icon.svg",
+  "assets/icons/info_icon.svg",
+  "assets/icons/location_icon.svg",
+  "assets/icons/lock_icon.svg",
+  "assets/icons/logout_icon.svg",
+  "assets/icons/next_icon.svg",
+  "assets/icons/privacy_icon.svg",
+  "assets/icons/question_icon.svg",
   "assets/images/.gitkeep",
 
   // test file
   "test/widget_test.dart",
 
   // Core files
+  // core config files
   "lib/core/config/app_api_endpoints.dart",
   "lib/core/config/app_constants.dart",
   "lib/core/config/app_dark_colors.dart",
@@ -80,23 +100,32 @@ final List<String> filesToReplace = [
   "lib/core/config/app_light_colors.dart",
   "lib/core/config/app_sizes.dart",
   "lib/core/config/app_strings.dart",
+  // core di files
   "lib/core/di/app_bindings.dart",
+  // core enums files
+  "lib/core/enums/general_type.dart",
   "lib/core/enums/http_method.dart",
+  // core error files
   "lib/core/error/.gitkeep",
+  // core extensions files
   "lib/core/extensions/context_extensions.dart",
   "lib/core/extensions/date_time_extensions.dart",
   "lib/core/extensions/list_extensions.dart",
   "lib/core/extensions/number_extensions.dart",
   "lib/core/extensions/strings_extensions.dart",
-  "lib/core/extensions/theme_extensions.dart",
   "lib/core/extensions/widget_extensions.dart",
+  // core localization files
   "lib/core/localization/bn_bn.dart",
   "lib/core/localization/en_us.dart",
   "lib/core/localization/localization.dart",
+  // core network files
   "lib/core/network/network_service.dart",
+  // core routes files
   "lib/core/routes/app_routes.dart",
   "lib/core/routes/app_screens.dart",
+  // core storage files
   "lib/core/storage/storage_service.dart",
+  // core themes files
   "lib/core/themes/app_appbar_theme.dart",
   "lib/core/themes/app_bottom_nav_bar_theme.dart",
   "lib/core/themes/app_bottom_sheet_theme.dart",
@@ -106,7 +135,6 @@ final List<String> filesToReplace = [
   "lib/core/themes/app_dialogue_theme.dart",
   "lib/core/themes/app_elevated_btn_theme.dart",
   "lib/core/themes/app_expansion_tile_theme.dart",
-  "lib/core/themes/app_floating_action_bar_theme.dart",
   "lib/core/themes/app_floating_action_bar_theme.dart",
   "lib/core/themes/app_input_decoration_theme.dart",
   "lib/core/themes/app_nav_drawer_theme.dart",
@@ -129,12 +157,23 @@ final List<String> filesToReplace = [
   // Utilities
   "lib/core/utils/device/device_utility.dart",
   "lib/core/utils/validators/app_validation.dart",
+  "lib/core/utils/helper_method.dart",
   "lib/core/utils/logger_utils.dart",
   "lib/core/utils/network_utils.dart",
   "lib/core/utils/permission_utils.dart",
 
   // Widgets
-  "lib/core/widgets/.gitkeep",
+  "lib/core/widgets/curved_bottom_border.dart",
+  "lib/core/widgets/custom_app_background.dart",
+  "lib/core/widgets/custom_app_bar.dart",
+  "lib/core/widgets/custom_nav_bar.dart",
+  "lib/core/widgets/custom_network_image.dart",
+  "lib/core/widgets/custom_pin_code_text_field",
+  "lib/core/widgets/custom_rich_text.dart",
+  "lib/core/widgets/custom_rounded_inner_icon.dart",
+  "lib/core/widgets/dotted_border.dart",
+  "lib/core/widgets/rounded_profile_card.dart",
+  "lib/core/widgets/row_end_text.dart",
 
   // Data files
   "lib/data/data_sources/remote/remote_data_source_impl.dart",
@@ -149,19 +188,49 @@ final List<String> filesToReplace = [
   "lib/domain/use_cases/get_sample_data_use_cases.dart",
 
   // Presentation files
+  // Presentation bindings files
+  "lib/presentation/bindings/auth/change_password_bindings.dart"
+  "lib/presentation/bindings/auth/forgot_password_bindings.dart"
+  "lib/presentation/bindings/auth/reset_password_bindings.dart"
+  "lib/presentation/bindings/auth/sign_in_bindings.dart"
+  "lib/presentation/bindings/auth/sign_up_bindings.dart"
+  "lib/presentation/bindings/auth/verify_email_bindings.dart"
+  "lib/presentation/bindings/general_bindings.dart",
   "lib/presentation/bindings/localization_bindings.dart",
   "lib/presentation/bindings/splash_bindings.dart",
   "lib/presentation/bindings/test_bindings.dart",
+  // Presentation controllers files
+  "lib/presentation/controllers/auth/change_password_controller.dart"
+  "lib/presentation/controllers/auth/forgot_password_controller.dart"
+  "lib/presentation/controllers/auth/reset_password_controller.dart"
+  "lib/presentation/controllers/auth/sign_in_controller.dart"
+  "lib/presentation/controllers/auth/sign_up_controller.dart"
+  "lib/presentation/controllers/auth/verify_email_controller.dart"
   "lib/presentation/controllers/localization_controller.dart",
   "lib/presentation/controllers/sample_controller.dart",
   "lib/presentation/controllers/splash_controller.dart",
+  // Presentation screens files
+  "lib/presentation/screens/auth/change_password_screen.dart"
+  "lib/presentation/screens/auth/forgot_password_screen.dart"
+  "lib/presentation/screens/auth/reset_password_screen.dart"
+  "lib/presentation/screens/auth/sign_in_screen.dart"
+  "lib/presentation/screens/auth/sign_up_screen.dart"
+  "lib/presentation/screens/auth/verify_email_screen.dart"
+  "lib/presentation/screens/profile/account_info_screen.dart"
+  "lib/presentation/screens/profile/profile_screen.dart"
+  "lib/presentation/screens/general_screen.dart",
+  "lib/presentation/screens/home_screen.dart",
   "lib/presentation/screens/splash_screen.dart",
   "lib/presentation/screens/test_screen.dart",
+  // Presentation widgets files
   "lib/presentation/widgets/.gitkeep",
 
-  // Main file and pubspec.yaml
+  // main 
   "lib/main.dart",
+  // pubspec.yaml
   "pubspec.yaml",
+  // analysis_options.yaml
+  "analysis_options.yaml",
 ];
 
 /// Main entry point of the CLI application.
@@ -171,7 +240,7 @@ final List<String> filesToReplace = [
 ///
 /// Example usage:
 /// ```bash
-/// sohan_starter_temp_clean_getx setup
+/// starter_temp_clean_getx setup
 /// ```
 void main(List<String> arguments) async {
   final parser = ArgParser()..addCommand('setup') ..addCommand('version');
@@ -179,7 +248,7 @@ void main(List<String> arguments) async {
 
   if (argResults.command?.name == 'setup') {
     final proceed = await askConfirmation(
-        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies. Your Files and folder might be replaced.... Do you want to continue? (y/n)");
+        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies.\nYour Files and folder might be replaced....\nDo you want to continue? (y/n)");
 
     if (proceed) {
       await setupProject();
@@ -188,16 +257,16 @@ void main(List<String> arguments) async {
     }
   } 
   else if (argResults.command?.name == 'version') {
-    printVersion(); // Show version when 'version' command is passed
+    printVersion();
   }
   else {
-    print("Invalid command. Use: `sohan_starter_temp_clean_getx setup`");
+    print("Invalid command. Use: `starter_temp_clean_getx setup`");
   }
 }
 
 void printVersion() {
-  const cliVersion = '1.2.0'; 
-  print("sohan_starter_temp_clean_getx CLI version: $cliVersion");
+  const cliVersion = '1.3.0'; 
+  print("tarter_temp_clean_getx CLI version: $cliVersion");
 }
 
 
@@ -274,7 +343,7 @@ Future<void> replaceFile(String from, String to) async {
         destinationDir.createSync(recursive: true);
       }
       File(to).createSync();
-      print("📂 Created .gitkeep file in: $to");
+      print("Created .gitkeep file in: $to");
     } else {
       print("File not found: $from");
     }
