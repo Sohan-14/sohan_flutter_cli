@@ -205,6 +205,8 @@ final List<String> filesToReplace = [
   "lib/presentation/controllers/auth/sign_in_controller.dart",
   "lib/presentation/controllers/auth/sign_up_controller.dart",
   "lib/presentation/controllers/auth/verify_email_controller.dart",
+  "lib/presentation/controllers/general_controller.dart",
+  "lib/presentation/controllers/navigation_controller.dart",
   "lib/presentation/controllers/localization_controller.dart",
   "lib/presentation/controllers/sample_controller.dart",
   "lib/presentation/controllers/splash_controller.dart",
@@ -247,7 +249,7 @@ void main(List<String> arguments) async {
 
   if (argResults.command?.name == 'setup') {
     final proceed = await askConfirmation(
-        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies.\nYour Files and folder might be replaced....\nDo you want to continue? (y/n)");
+        "This will set up your Flutter project with predefined templates, folders, files, and added dependencies.\nFor cli version just simply run ✅ dart pub global activate sohan_flutter_cli ✅\nYour Files and folder might be replaced....\nDo you want to continue? (y/n)");
 
     if (proceed) {
       await setupProject();
@@ -268,8 +270,8 @@ void main(List<String> arguments) async {
 ///
 /// [printVersion]
 void printVersion() {
-  const cliVersion = '1.3.1'; 
-  print("tarter_temp_clean_getx CLI version: $cliVersion");
+  const cliVersion = '2.0.0'; 
+  print("sohan_flutter_cli  version: $cliVersion");
 }
 
 
