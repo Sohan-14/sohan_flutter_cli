@@ -272,7 +272,7 @@ void main(List<String> arguments) async {
 ///
 /// [printVersion]
 void printVersion() {
-  const cliVersion = '2.0.0';
+  const cliVersion = '2.1.0';
   print("sohan_flutter_cli  version: $cliVersion");
 }
 
