@@ -4,7 +4,3 @@ linter:
   rules:
     public_member_api_docs: true
 
-
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**

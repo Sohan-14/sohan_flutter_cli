@@ -1,2 +1,2 @@
-## 1.3.0
-- Add more files
+## 1.3.1
+- Solve copy files bugs

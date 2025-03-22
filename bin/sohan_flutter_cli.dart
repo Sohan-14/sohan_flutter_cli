@@ -2,10 +2,12 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:yaml_edit/yaml_edit.dart';
 
+/// repo url
 const String repoUrl ="https://github.com/Sohan-14/sohan_starter_temp_clean_getx.git";
+// template folder
 const String tempFolder = "starter_temp_clean_getx";
 
-// Define the folders to copy
+/// Define the folders to copy
 final List<String> foldersToCopy = [
   // assets
   'assets/fonts',
@@ -44,11 +46,8 @@ final List<String> foldersToCopy = [
   'lib/domain/use_cases',
 
   // Presentation
-  'lib/presentation/bindings',
   'lib/presentation/bindings/auth',
-  'lib/presentation/controllers',
   'lib/presentation/controllers/auth',
-  'lib/presentation/screens',
   'lib/presentation/screens/auth',
   'lib/presentation/screens/profile',
   'lib/presentation/widgets',
@@ -189,35 +188,35 @@ final List<String> filesToReplace = [
 
   // Presentation files
   // Presentation bindings files
-  "lib/presentation/bindings/auth/change_password_bindings.dart"
-  "lib/presentation/bindings/auth/forgot_password_bindings.dart"
-  "lib/presentation/bindings/auth/reset_password_bindings.dart"
-  "lib/presentation/bindings/auth/sign_in_bindings.dart"
-  "lib/presentation/bindings/auth/sign_up_bindings.dart"
-  "lib/presentation/bindings/auth/verify_email_bindings.dart"
+  "lib/presentation/bindings/auth/change_password_bindings.dart",
+  "lib/presentation/bindings/auth/forgot_password_bindings.dart",
+  "lib/presentation/bindings/auth/reset_password_bindings.dart",
+  "lib/presentation/bindings/auth/sign_in_bindings.dart",
+  "lib/presentation/bindings/auth/sign_up_bindings.dart",
+  "lib/presentation/bindings/auth/verify_email_bindings.dart",
   "lib/presentation/bindings/general_bindings.dart",
   "lib/presentation/bindings/localization_bindings.dart",
   "lib/presentation/bindings/splash_bindings.dart",
   "lib/presentation/bindings/test_bindings.dart",
   // Presentation controllers files
-  "lib/presentation/controllers/auth/change_password_controller.dart"
-  "lib/presentation/controllers/auth/forgot_password_controller.dart"
-  "lib/presentation/controllers/auth/reset_password_controller.dart"
-  "lib/presentation/controllers/auth/sign_in_controller.dart"
-  "lib/presentation/controllers/auth/sign_up_controller.dart"
-  "lib/presentation/controllers/auth/verify_email_controller.dart"
+  "lib/presentation/controllers/auth/change_password_controller.dart",
+  "lib/presentation/controllers/auth/forgot_password_controller.dart",
+  "lib/presentation/controllers/auth/reset_password_controller.dart",
+  "lib/presentation/controllers/auth/sign_in_controller.dart",
+  "lib/presentation/controllers/auth/sign_up_controller.dart",
+  "lib/presentation/controllers/auth/verify_email_controller.dart",
   "lib/presentation/controllers/localization_controller.dart",
   "lib/presentation/controllers/sample_controller.dart",
   "lib/presentation/controllers/splash_controller.dart",
   // Presentation screens files
-  "lib/presentation/screens/auth/change_password_screen.dart"
-  "lib/presentation/screens/auth/forgot_password_screen.dart"
-  "lib/presentation/screens/auth/reset_password_screen.dart"
-  "lib/presentation/screens/auth/sign_in_screen.dart"
-  "lib/presentation/screens/auth/sign_up_screen.dart"
-  "lib/presentation/screens/auth/verify_email_screen.dart"
-  "lib/presentation/screens/profile/account_info_screen.dart"
-  "lib/presentation/screens/profile/profile_screen.dart"
+  "lib/presentation/screens/auth/change_password_screen.dart",
+  "lib/presentation/screens/auth/forgot_password_screen.dart",
+  "lib/presentation/screens/auth/reset_password_screen.dart",
+  "lib/presentation/screens/auth/sign_in_screen.dart",
+  "lib/presentation/screens/auth/sign_up_screen.dart",
+  "lib/presentation/screens/auth/verify_email_screen.dart",
+  "lib/presentation/screens/profile/account_info_screen.dart",
+  "lib/presentation/screens/profile/profile_screen.dart",
   "lib/presentation/screens/general_screen.dart",
   "lib/presentation/screens/home_screen.dart",
   "lib/presentation/screens/splash_screen.dart",
@@ -264,8 +263,12 @@ void main(List<String> arguments) async {
   }
 }
 
+
+// Print the cli version
+///
+/// [printVersion]
 void printVersion() {
-  const cliVersion = '1.3.0'; 
+  const cliVersion = '1.3.1'; 
   print("tarter_temp_clean_getx CLI version: $cliVersion");
 }
 
@@ -273,7 +276,6 @@ void printVersion() {
 /// Asking for confirmation from user
 ///
 /// Throws a [SetupException] if the setup fails.
-
 Future<bool> askConfirmation(String prompt) async {
   while (true) {
     stdout.write("$prompt ");
@@ -295,7 +297,6 @@ Future<bool> askConfirmation(String prompt) async {
 /// files, and updating `pubspec.yaml` with necessary dependencies.
 ///
 /// Throws a [SetupException] if the setup fails.
-
 Future<void> setupProject() async {
   final String currentDir = Directory.current.path;
 
@@ -330,7 +331,7 @@ Future<void> setupProject() async {
 ///
 /// Example usage:
 /// ```bash
-/// sohan_starter_temp_clean_getx setup
+/// starter_temp_clean_getx setup
 /// ```
 Future<void> replaceFile(String from, String to) async {
   final sourceFile = File(from);
@@ -374,7 +375,7 @@ Future<void> replaceFile(String from, String to) async {
 ///
 /// Example usage:
 /// ```bash
-/// sohan_starter_temp_clean_getx setup
+/// starter_temp_clean_getx setup
 /// ```
 ///
 Future<void> updatePubspec(String pubspecPath) async {
@@ -400,7 +401,7 @@ Future<void> updatePubspec(String pubspecPath) async {
 ///
 /// Example usage:
 /// ```bash
-/// sohan_starter_temp_clean_getx setup
+/// starter_temp_clean_getx setup
 /// ```
 ///
 Future<void> runFlutterPubGet() async {
