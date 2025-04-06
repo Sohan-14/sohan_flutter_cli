@@ -193,7 +193,7 @@ final List<String> filesToReplace = [
   "lib/app/widgets/custom_button.dart",
   "lib/app/widgets/custom_nav_bar.dart",
   "lib/app/widgets/custom_network_image.dart",
-  "lib/app/widgets/custom_pin_code_text_field",
+  "lib/app/widgets/custom_pin_code_text_field.dart",
   "lib/app/widgets/custom_rich_text.dart",
   "lib/app/widgets/custom_rounded_inner_icon.dart",
   "lib/app/widgets/dotted_border.dart",
@@ -290,8 +290,8 @@ void main(List<String> arguments) async {
 ///
 /// [printVersion]
 void printVersion() {
-  const cliVersion = '3.0.0';
-  print("sohan_flutter_cli  version: $cliVersion");
+  const cliVersion = '3.0.1';
+  print("sohan_flutter_cli version: $cliVersion");
 }
 
 /// Asking for confirmation from user
